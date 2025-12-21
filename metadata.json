@@ -1,0 +1,7 @@
+{
+  "name": "VittaLok Integration & Finance",
+  "description": "A premium corporate portal for a multi-service company specializing in System Integration and Financial Consultancy Services.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
