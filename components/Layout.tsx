@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Globe, Phone, Mail, ChevronRight } from 'lucide-react';
+import { Menu, X,  Phone, Mail, ChevronRight } from 'lucide-react';
+import { Linkedin, Twitter, Instagram,  } from "lucide-react";
+
 
 const NavLink: React.FC<{ to: string; label: string; active?: boolean }> = ({ to, label, active }) => (
   <Link
@@ -13,6 +15,24 @@ const NavLink: React.FC<{ to: string; label: string; active?: boolean }> = ({ to
     <span className={`absolute bottom-0 left-4 right-4 h-0.5 bg-teal-500 transform origin-left transition-transform duration-300 ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
   </Link>
 );
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/vittalok/?viewAsMember=true",
+    icon: <Linkedin size={18} />
+  },
+  {
+    name: "Twitter",
+    url: "#",
+    icon: <Twitter size={18} />
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/vittalok.in/",
+    icon: <Instagram size={18} />
+  }
+];
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +49,7 @@ const Header: React.FC = () => {
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
     { to: '/services', label: 'Services' },
-    { to: '/industries', label: 'Industries' },
+    // { to: '/industries', label: 'Industries' },
     { to: '/case-studies', label: 'Case Studies' },
     { to: '/contact', label: 'Contact' },
   ];
@@ -122,13 +142,28 @@ const Footer: React.FC = () => {
             <p className="text-slate-400 leading-relaxed text-sm">
               The premier partner for enterprise-scale technology integration and high-stakes financial advisory.
             </p>
-            <div className="flex space-x-3">
+            {/* <div className="flex space-x-3">
               {['Twitter', 'LinkedIn', 'Web'].map((social) => (
                 <a key={social} href="#" className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all">
                   <Globe size={18} />
                 </a>
               ))}
-            </div>
+            </div> */}
+            <div className="flex space-x-3">
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+
           </div>
 
           <div>
@@ -156,11 +191,11 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-sm">
               <li className="flex items-center space-x-3">
                 <Phone size={16} className="text-teal-400" />
-                <span>+1 (800) VITTA-LOK</span>
+                <span>+91 7838600498</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={16} className="text-teal-400" />
-                <span>info@vittalok.com</span>
+                <span>contact@vittalok.com</span>
               </li>
               <li className="text-slate-500 pt-2 italic">
                 Authorized for global enterprise delivery.

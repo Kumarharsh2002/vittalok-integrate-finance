@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { SERVICES } from '../constants';
 import { ServiceDomain } from '../types';
+import { Link } from "react-router-dom";
 import { CheckCircle2, ArrowRight, Server, Briefcase, Globe, ChevronDown, HelpCircle, Layers, ShieldCheck, Zap, MousePointer2 } from 'lucide-react';
 
 const FAQItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => {
@@ -139,13 +140,19 @@ const Services: React.FC = () => {
 
                 <div className="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-6">
                   <div className="flex items-center space-x-3 text-slate-400">
-                    <Globe size={16} />
-                    <span className="text-[10px] font-bold uppercase tracking-widest">ISO 27001 Certified Engagement</span>
+                    {/* <Globe size={16} /> */}
+                    {/* <span className="text-[10px] font-bold uppercase tracking-widest">ISO 27001 Certified Engagement</span> */}
                   </div>
+                  {/* <button className="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white font-black rounded-2xl hover:bg-teal-600 transition-all flex items-center justify-center space-x-3 active:scale-95 group/btn shadow-xl shadow-slate-900/10">
+                    <span className="uppercase text-xs tracking-widest">Consult Principal</span>
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </button> */}
+                   <Link to="/contact">
                   <button className="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white font-black rounded-2xl hover:bg-teal-600 transition-all flex items-center justify-center space-x-3 active:scale-95 group/btn shadow-xl shadow-slate-900/10">
                     <span className="uppercase text-xs tracking-widest">Consult Principal</span>
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </button>
+                </Link>
                 </div>
               </div>
             </div>

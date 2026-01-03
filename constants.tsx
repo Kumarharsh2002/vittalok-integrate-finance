@@ -58,9 +58,9 @@ export const SERVICES: ServiceDetail[] = [
   // Financial Consultancy
   {
     id: 'fin-advisory',
-    title: 'Financial Advisory',
+    title: 'Advisory Services',
     description: 'Strategic investment planning and capital allocation strategies.',
-    benefits: ['High ROI', 'Sustainable Growth', 'Market Insight'],
+    benefits: ['Accounting & Audit', 'Sustainable Growth', 'Market Insight'],
     useCases: ['Portfolio Management', 'Investment Strategy'],
     industries: ['SMEs', 'Enterprises', 'Startups'],
     domain: ServiceDomain.FINANCIAL_CONSULTANCY,

@@ -53,7 +53,7 @@ const Contact: React.FC = () => {
                   <div>
                     <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Executive Line</p>
                     <a href="tel:+18005550199" className="text-lg font-bold hover:text-teal-400 transition-colors underline decoration-teal-500/30 underline-offset-4">
-                      +1 (800) VITTA-LOK
+                      +91 7838600498
                     </a>
                   </div>
                 </div>
@@ -65,7 +65,7 @@ const Contact: React.FC = () => {
                   <div>
                     <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Advisory Email</p>
                     <a href="mailto:strategy@vittalok.com" className="text-lg font-bold hover:text-teal-400 transition-colors underline decoration-teal-500/30 underline-offset-4">
-                      strategy@vittalok.com
+                         contact@vittalok.com
                     </a>
                   </div>
                 </div>
@@ -77,7 +77,7 @@ const Contact: React.FC = () => {
                   <div>
                     <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Global Headquarters</p>
                     <p className="text-lg font-bold text-white">
-                      Financial District, <br />New York, NY 10004
+                      Laxmi Nagar, <br />New Delhi, 110094
                     </p>
                   </div>
                 </div>
@@ -209,7 +209,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Interactive Map/Location Footer */}
-      <section className="max-w-7xl mx-auto px-4 pb-12">
+      {/* <section className="max-w-7xl mx-auto px-4 pb-12">
         <div className="bg-slate-200 w-full h-[500px] rounded-[60px] flex items-center justify-center text-slate-400 relative overflow-hidden group shadow-inner">
           <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070" className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-10000" alt="New York Map" />
           <div className="absolute inset-0 bg-slate-900/40"></div>
@@ -224,7 +224,7 @@ const Contact: React.FC = () => {
              </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

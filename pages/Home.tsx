@@ -93,7 +93,7 @@ const Home: React.FC = () => {
       <section className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <StatCard icon={<Award />} label="Industry Awards" value="48+" />
+            <StatCard icon={<Award />} label="Happy Clients" value="48+" />
             <StatCard icon={<Briefcase />} label="Success Projects" value="1.2k+" />
             <StatCard icon={<Users />} label="Expert Consultants" value="350+" />
             <StatCard icon={<Globe />} label="Global Presence" value="24/7" />
@@ -155,7 +155,7 @@ const Home: React.FC = () => {
                   Strategic capital management and growth advisory tailored for high-growth tech enterprises and global manufacturers.
                </p>
                <ul className="grid grid-cols-1 gap-4 mb-12">
-                  {['Corporate Structuring', 'Risk Management', 'M&A Advisory', 'Business Valuation'].map((item) => (
+                  {['Corporate Secretarial Services', 'Risk Management', 'Tax Advisory', 'Consultancy Services'].map((item) => (
                     <li key={item} className="flex items-center space-x-3 text-slate-200 font-semibold">
                       <div className="w-6 h-6 bg-slate-800 rounded-full flex items-center justify-center">
                         <CheckCircle2 className="text-teal-400 w-4 h-4" />
