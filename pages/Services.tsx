@@ -1,107 +1,91 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { SERVICES } from "../constants";
 import { ServiceDomain } from "../types";
-import { Link } from "react-router-dom";
 import {
   CheckCircle2,
   ArrowRight,
   Briefcase,
-  ChevronDown,
-  HelpCircle,
   Layers,
   Shield,
   FileText,
   BookOpen
 } from "lucide-react";
 
-/* ---------------- FAQ ITEM ---------------- */
-const FAQItem: React.FC<{ question: string; answer: string }> = ({
-  question,
-  answer
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className="border-b border-slate-200">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-6 flex items-center justify-between text-left"
-      >
-        <span className={`text-lg font-bold ${isOpen ? "text-teal-600" : ""}`}>
-          {question}
-        </span>
-        <ChevronDown
-          size={20}
-          className={`transition-transform ${isOpen ? "rotate-180 text-teal-600" : ""}`}
-        />
-      </button>
-      {isOpen && (
-        <p className="pb-6 text-slate-600 leading-relaxed">{answer}</p>
-      )}
-    </div>
-  );
+/* ---------------- EXTRA CORE CAPABILITIES (SYSTEM INTEGRATION) ---------------- */
+const extraCapabilitiesByTitle = {
+  "ERP Integration": [
+    "SAP / Oracle Integration",
+    "Business Process Automation",
+    "Legacy System Modernisation",
+    "Real-time Data Synchronisation"
+  ],
+  "Cloud Infrastructure": [
+    "Cloud Architecture Design",
+    "Secure Cloud Migration",
+    "High Availability & DR",
+    "Cost Optimisation"
+  ],
+  "Cyber Security": [
+    "Threat & Vulnerability Assessment",
+    "Security Architecture Design",
+    "Compliance & Risk Management",
+    "Incident Response Planning"
+  ],
+  "Data & Analytics": [
+    "Business Intelligence",
+    "Data Warehousing",
+    "Advanced Reporting",
+    "Decision Support Systems"
+  ]
 };
 
-/* ---------------- PROCESS STEP ---------------- */
-const ProcessStep: React.FC<{
-  step: string;
-  title: string;
-  desc: string;
-}> = ({ step, title, desc }) => (
-  <div className="relative p-8 bg-white rounded-[32px] shadow-sm hover:shadow-xl transition">
-    <div className="absolute -top-4 -left-4 w-12 h-12 bg-slate-900 text-teal-400 flex items-center justify-center rounded-xl font-black">
-      {step}
-    </div>
-    <h4 className="text-xl font-black mt-6 mb-3">{title}</h4>
-    <p className="text-slate-500 text-sm">{desc}</p>
-  </div>
-);
-
-/* ---------------- FINANCIAL SERVICES DATA (short features) ---------------- */
+/* ---------------- FINANCIAL STRATEGY DATA ---------------- */
 const financialServices = [
   {
     icon: Shield,
     title: "Advisory Services",
     description:
-      "Assurance, governance and internal control strengthening for enterprise scale.",
+      "Governance, assurance and internal control strengthening for enterprises.",
     features: [
-      "Accounting & Audit Opinions",
-      "GST Audits",
-      "Special Project Audits",
-      "Internal Controls"
+      "Audit & Assurance",
+      "Internal Controls",
+      "Risk Advisory",
+      "Governance Review"
     ]
   },
   {
     icon: FileText,
     title: "Tax Advisory",
     description:
-      "Practical tax planning, compliance and dispute support across direct & indirect taxes.",
+      "Strategic tax planning, compliance and transaction support.",
     features: [
-      "Direct Tax Compliance",
-      "Transaction Advisory",
+      "Direct Tax",
       "GST Advisory",
-      "Tax Planning"
+      "Tax Planning",
+      "Litigation Support"
     ]
   },
   {
     icon: Briefcase,
     title: "Corporate Secretarial",
     description:
-      "End-to-end secretarial support to keep governance and filings on point.",
+      "End-to-end secretarial and regulatory compliance services.",
     features: [
-      "Incorporation",
-      "Ongoing Compliance",
-      "Regulatory Filings",
-      "Restructuring Support"
+      "Company Incorporation",
+      "ROC Filings",
+      "Board Compliance",
+      "Corporate Restructuring"
     ]
   },
   {
     icon: BookOpen,
     title: "Other Services",
     description:
-      "Operational finance services and value-add programs for teams and leaders.",
+      "Operational finance, accounting and professional training services.",
     features: [
-      "Bookkeeping & Accounts",
-      "Registrations (PAN/GST/EPF)",
+      "Bookkeeping",
+      "Statutory Registrations",
       "Financial Statements",
       "Workshops & Training"
     ]
@@ -114,7 +98,9 @@ const Services: React.FC = () => {
     ServiceDomain.SYSTEM_INTEGRATION
   );
 
-  const filteredServices = SERVICES.filter((s) => s.domain === activeTab);
+  const filteredServices = SERVICES.filter(
+    (service) => service.domain === activeTab
+  );
 
   return (
     <div className="pb-32">
@@ -132,6 +118,7 @@ const Services: React.FC = () => {
             <Layers className="inline mr-2" />
             System Integration
           </button>
+
           <button
             onClick={() => setActiveTab(ServiceDomain.FINANCIAL_CONSULTANCY)}
             className={`flex-1 py-6 rounded-[30px] font-black ${
@@ -150,25 +137,33 @@ const Services: React.FC = () => {
       <section className="max-w-7xl mx-auto px-4 mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-          {/* SYSTEM INTEGRATION (unchanged) */}
-          {activeTab === ServiceDomain.SYSTEM_INTEGRATION
-            ? filteredServices.map((service) => (
+          {/* -------- SYSTEM INTEGRATION -------- */}
+          {activeTab === ServiceDomain.SYSTEM_INTEGRATION &&
+            filteredServices.map((service) => {
+              const extra =
+                extraCapabilitiesByTitle[
+                  service.title as keyof typeof extraCapabilitiesByTitle
+                ] || [];
+
+              const combinedFeatures = [...service.benefits, ...extra];
+
+              return (
                 <div
                   key={service.id}
-                  className="group relative bg-white rounded-[48px] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-700 overflow-hidden flex flex-col p-10 lg:p-14"
+                  className="group relative bg-white rounded-[48px] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-700 p-10 lg:p-14"
                 >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-[100px] -z-0 transition-transform group-hover:scale-110 duration-700"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-[100px]" />
 
                   <div className="relative z-10">
-                    <div className="w-16 h-16 bg-slate-900 text-teal-400 flex items-center justify-center rounded-2xl mb-10 shadow-lg transform group-hover:rotate-6 transition-transform">
+                    <div className="w-16 h-16 bg-slate-900 text-teal-400 flex items-center justify-center rounded-2xl mb-10 shadow-lg">
                       {service.icon}
                     </div>
 
-                    <h3 className="text-3xl font-black text-slate-900 mb-6 leading-tight uppercase tracking-tighter">
+                    <h3 className="text-3xl font-black uppercase tracking-tighter mb-6">
                       {service.title}
                     </h3>
 
-                    <p className="text-xl text-slate-600 mb-10 leading-relaxed font-medium">
+                    <p className="text-xl text-slate-600 mb-10">
                       {service.description}
                     </p>
 
@@ -178,105 +173,77 @@ const Services: React.FC = () => {
                       </h4>
 
                       <div className="flex flex-wrap gap-2">
-                        {service.benefits.map((b) => (
+                        {combinedFeatures.map((feature) => (
                           <span
-                            key={b}
-                            className="flex items-center space-x-2 bg-slate-50 px-4 py-2 rounded-xl text-slate-700 font-bold text-xs border border-slate-100 group-hover:bg-teal-50 group-hover:border-teal-100 transition-colors"
+                            key={feature}
+                            className="flex items-center space-x-2 bg-slate-50 px-4 py-2 rounded-xl text-xs font-bold border"
                           >
-                            <CheckCircle2 className="text-teal-500 w-3 h-3" />
-                            <span>{b}</span>
+                            <CheckCircle2 className="w-3 h-3 text-teal-500" />
+                            <span>{feature}</span>
                           </span>
                         ))}
                       </div>
                     </div>
 
-                    <div className="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-6">
-                      <div className="flex items-center space-x-3 text-slate-400"></div>
-
+                    <div className="pt-10 border-t flex justify-end">
                       <Link to="/contact">
-                        <button className="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white font-black rounded-2xl hover:bg-teal-600 transition-all flex items-center justify-center space-x-3 active:scale-95 group/btn shadow-xl shadow-slate-900/10">
-                          <span className="uppercase text-xs tracking-widest">Consult Principal</span>
-                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        <button className="px-8 py-4 bg-slate-900 text-white font-black rounded-2xl hover:bg-teal-600 transition">
+                          Consult Principal
                         </button>
                       </Link>
                     </div>
                   </div>
                 </div>
-              ))
-            : /* FINANCIAL STRATEGY -- cards styled same as system cards, short features */
-              financialServices.map((service, idx) => {
-                const Icon = service.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="group relative bg-white rounded-[48px] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-700 overflow-hidden flex flex-col p-10 lg:p-14"
-                  >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-[100px] -z-0 transition-transform group-hover:scale-110 duration-700"></div>
+              );
+            })}
 
-                    <div className="relative z-10">
-                      <div className="w-16 h-16 bg-slate-900 text-teal-400 flex items-center justify-center rounded-2xl mb-10 shadow-lg transform group-hover:rotate-6 transition-transform">
-                        {/* render icon component */}
-                        <Icon size={28} />
-                      </div>
+          {/* -------- FINANCIAL STRATEGY -------- */}
+          {activeTab === ServiceDomain.FINANCIAL_CONSULTANCY &&
+            financialServices.map((service, idx) => {
+              const Icon = service.icon;
+              return (
+                <div
+                  key={idx}
+                  className="group relative bg-white rounded-[48px] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-700 p-10 lg:p-14"
+                >
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-[100px]" />
 
-                      <h3 className="text-3xl font-black text-slate-900 mb-6 leading-tight uppercase tracking-tighter">
-                        {service.title}
-                      </h3>
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-slate-900 text-teal-400 flex items-center justify-center rounded-2xl mb-10">
+                      <Icon size={28} />
+                    </div>
 
-                      <p className="text-xl text-slate-600 mb-10 leading-relaxed font-medium">
-                        {service.description}
-                      </p>
+                    <h3 className="text-3xl font-black uppercase mb-6">
+                      {service.title}
+                    </h3>
 
-                      <div className="space-y-6 mb-12">
-                        <h4 className="text-[10px] font-black text-teal-600 uppercase tracking-[0.4em]">
-                          Core Capabilities
-                        </h4>
+                    <p className="text-xl text-slate-600 mb-10">
+                      {service.description}
+                    </p>
 
-                        <div className="flex flex-wrap gap-2">
-                          {service.features.map((f) => (
-                            <span
-                              key={f}
-                              className="flex items-center space-x-2 bg-slate-50 px-4 py-2 rounded-xl text-slate-700 font-bold text-xs border border-slate-100 group-hover:bg-teal-50 group-hover:border-teal-100 transition-colors"
-                            >
-                              <CheckCircle2 className="text-teal-500 w-3 h-3" />
-                              <span>{f}</span>
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                    <div className="flex flex-wrap gap-2 mb-12">
+                      {service.features.map((f) => (
+                        <span
+                          key={f}
+                          className="flex items-center space-x-2 bg-slate-50 px-4 py-2 rounded-xl text-xs font-bold border"
+                        >
+                          <CheckCircle2 className="w-3 h-3 text-teal-500" />
+                          <span>{f}</span>
+                        </span>
+                      ))}
+                    </div>
 
-                      <div className="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-6">
-                        <div className="flex items-center space-x-3 text-slate-400"></div>
-
-                        <Link to="/contact">
-                          <button className="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white font-black rounded-2xl hover:bg-teal-600 transition-all flex items-center justify-center space-x-3 active:scale-95 group/btn shadow-xl shadow-slate-900/10">
-                            <span className="uppercase text-xs tracking-widest">Consult Principal</span>
-                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                          </button>
-                        </Link>
-                      </div>
+                    <div className="pt-10 border-t flex justify-end">
+                      <Link to="/contact">
+                        <button className="px-8 py-4 bg-slate-900 text-white font-black rounded-2xl hover:bg-teal-600 transition">
+                          Consult Principal
+                        </button>
+                      </Link>
                     </div>
                   </div>
-                );
-              })}
-        </div>
-      </section>
-
-      {/* ---------------- CTA (NO DOWNLOAD BUTTON) ---------------- */}
-      <section className="max-w-6xl mx-auto px-4 mt-40">
-        <div className="bg-slate-900 rounded-[60px] p-20 text-center text-white">
-          <h2 className="text-5xl font-black mb-6">
-            Ready to <span className="text-teal-400">Architect</span> Growth?
-          </h2>
-          <p className="text-slate-400 mb-12 text-xl">
-            Connect with a Principal Advisor to begin your engagement.
-          </p>
-
-          <Link to="/contact">
-            <button className="px-16 py-6 bg-teal-500 text-slate-900 font-black rounded-3xl hover:bg-white transition">
-              Request Principal Brief
-            </button>
-          </Link>
+                </div>
+              );
+            })}
         </div>
       </section>
     </div>

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Target, Eye, ShieldCheck, Heart, Cpu, BarChart, Globe, Zap, Award, Users } from 'lucide-react';
+import ceoPicture from './assests/ceo-picture.jpeg';
 
 const ValueCard: React.FC<{ icon: React.ReactNode; title: string; description: string }> = ({ icon, title, description }) => (
   <div className="p-8 bg-slate-50 border border-slate-100 rounded-[32px] hover:shadow-xl transition-all duration-500 group">
@@ -46,10 +47,10 @@ const About: React.FC = () => {
                     </div>
                   ))}
                 </div>
-                <div>
+                {/* <div>
                   <div className="text-sm font-bold text-slate-900">450+ Dedicated Professionals</div>
                   <div className="text-xs text-slate-500">Global HQ: New York Financial District</div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="relative">
@@ -197,10 +198,10 @@ const About: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               { 
-                name: 'Dr. Sarah Vance', 
-                role: 'Chief Executive Officer', 
-                img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400", 
-                bio: 'Formerly MD at Goldman Sachs, Dr. Vance pioneered the Value-First Integration framework used by VittaLok today.' 
+                name: 'Ms. Richi Agrawal', 
+                role: 'Founder & CEO', 
+                img: ceoPicture, 
+                bio: 'Finance & audit professional with over 10 years of experience in Statutory Audit, Internal Audit, Regulatory Compliance, and financial management, and a qualified Chartered Accountant.' 
               },
               { 
                 name: 'Michael Chen', 
@@ -208,12 +209,12 @@ const About: React.FC = () => {
                 img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400", 
                 bio: 'An MIT fellow with 15 years experience scaling private cloud infrastructures for industrial conglomerates.' 
               },
-              { 
-                name: 'Aaliyah Khan', 
-                role: 'Strategic Capital Advisor', 
-                img: "https://images.unsplash.com/photo-1567532939604-b6c5b0ad2e01?auto=format&fit=crop&q=80&w=400", 
-                bio: 'Leading our financial wing, Aaliyah specializes in M&A due diligence and tax-optimized corporate scaling.' 
-              }
+              // { 
+              //   name: 'Aaliyah Khan', 
+              //   role: 'Strategic Capital Advisor', 
+              //   img: "https://images.unsplash.com/photo-1567532939604-b6c5b0ad2e01?auto=format&fit=crop&q=80&w=400", 
+              //   bio: 'Leading our financial wing, Aaliyah specializes in M&A due diligence and tax-optimized corporate scaling.' 
+              // }
             ].map((leader, idx) => (
               <div key={idx} className="group flex flex-col h-full bg-white rounded-[40px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-700">
                 <div className="aspect-[4/5] overflow-hidden relative">
@@ -234,7 +235,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Impact Stats */}
-      <section className="py-24 bg-white border-y border-slate-100">
+      {/* <section className="py-24 bg-white border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             <div>
@@ -255,7 +256,7 @@ const About: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA section */}
       <section className="py-32 bg-slate-900 text-white text-center">

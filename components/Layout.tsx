@@ -197,15 +197,15 @@ const Footer: React.FC = () => {
                 <Mail size={16} className="text-teal-400" />
                 <span>contact@vittalok.com</span>
               </li>
-              <li className="text-slate-500 pt-2 italic">
+              {/* <li className="text-slate-500 pt-2 italic">
                 Authorized for global enterprise delivery.
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
         
         <div className="pt-8 border-t border-slate-800/50 text-center text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} VittaLok Global Services. SOC2 Compliant. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} VittaLok Private Limited. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -11,13 +11,21 @@ import {
   BarChart3,
 } from "lucide-react";
 
-/* ✅ Correct imports – assets folder inside pages */
+/* ================== CLIENT LOGOS ================== */
 import tatalogo from "./assests/tatacaptial-logo.png";
 import idfclogo from "./assests/idfc-logo.png";
 import incredlogo from "./assests/incred-logo.png";
 import axisbanklogo from "./assests/axisbank-logo.png";
 
-/* Companies */
+/* ================== PARTNER LOGOS ================== */
+import hpLogo from "./assests/HP-Logo.webp";
+import dellLogo from "./assests/dell-logo.webp";
+import ciscoLogo from "./assests/cisco-logo.webp";
+import tenableLogo from "./assests/tenable-logo.webp";
+import paloaltoLogo from "./assests/Palo-Alto-logo.webp";
+import nivettiLogo from "./assests/nivetti-logo.webp";
+
+/* ================== DATA ================== */
 const companies = [
   { name: "Tata Capital", logo: tatalogo },
   { name: "Axis Bank", logo: axisbanklogo },
@@ -26,10 +34,19 @@ const companies = [
   { name: "InCred", logo: incredlogo },
 ];
 
+const partners = [
+  { name: "HP", logo: hpLogo },
+  { name: "Dell Technologies", logo: dellLogo },
+  { name: "Cisco", logo: ciscoLogo },
+  { name: "Palo Alto Networks", logo: paloaltoLogo },
+  { name: "Tenable", logo: tenableLogo },
+  { name: "Nivetti", logo: nivettiLogo },
+];
+
 const Home: React.FC = () => {
   return (
     <div className="animate-fade-in">
-      {/* HERO SECTION */}
+      {/* ================= HERO SECTION ================= */}
       <section className="min-h-[95vh] flex items-center pt-12 pb-24">
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-20 items-center">
           {/* LEFT */}
@@ -107,8 +124,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* LOGO SCROLLER */}
-      <section className="bg-gray-50 py-10 overflow-hidden">
+      {/* ================= CLIENT LOGO SCROLLER ================= */}
+      <section className="bg-gray-50 py-12 overflow-hidden">
         <h2 className="text-center text-2xl font-bold mb-8">
           Trusted By Leading Institutions
         </h2>
@@ -129,7 +146,37 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* SERVICES */}
+      {/* ================= PARTNER SECTION ================= */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black mb-4">
+              Our <span className="text-teal-600">Technology Partners</span>
+            </h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              We collaborate with global technology leaders to deliver secure,
+              scalable, and future-ready enterprise solutions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10 items-center">
+            {partners.map((partner) => (
+              <div
+                key={partner.name}
+                className="flex items-center justify-center p-6 bg-slate-50 rounded-3xl hover:shadow-xl hover:scale-105 transition-all"
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="h-14 object-contain grayscale hover:grayscale-0 transition"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SERVICES ================= */}
       <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 px-4">
           <div className="p-12 bg-slate-50 rounded-[50px]">
