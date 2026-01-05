@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Target, Eye, ShieldCheck, Heart, Cpu, BarChart, Globe, Zap, Award, Users } from 'lucide-react';
-import ceoPicture from './assests/ceo-picture.jpeg';
+// import ceoPicture from './assests/ceo-picture.jpeg';
+import { Link } from "react-router-dom";
 
 const ValueCard: React.FC<{ icon: React.ReactNode; title: string; description: string }> = ({ icon, title, description }) => (
   <div className="p-8 bg-slate-50 border border-slate-100 rounded-[32px] hover:shadow-xl transition-all duration-500 group">
@@ -184,7 +185,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Enhanced Leadership Section */}
-      <section className="py-32 bg-slate-50 border-t border-slate-100">
+      {/* <section className="py-32 bg-slate-50 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
             <div className="max-w-2xl">
@@ -232,7 +233,7 @@ const About: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Impact Stats */}
       {/* <section className="py-24 bg-white border-y border-slate-100">
@@ -265,14 +266,29 @@ const About: React.FC = () => {
           <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
             Ready to explore how the VittaLok Framework can transform your technical debt into strategic capital?
           </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8">
+          {/* <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8">
             <button className="px-12 py-5 bg-teal-500 text-slate-900 font-black rounded-2xl hover:bg-white transition-all text-sm uppercase tracking-widest">
               Schedule Leadership Call
             </button>
             <button className="px-12 py-5 bg-transparent border-2 border-white/20 text-white font-black rounded-2xl hover:bg-white/10 transition-all text-sm uppercase tracking-widest">
               Explore Services
             </button>
-          </div>
+          </div> */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          {/* Contact Page */}
+          <Link to="/contact">
+            <button className="px-12 py-5 bg-teal-500 text-slate-900 font-black rounded-2xl hover:bg-white transition-all text-sm uppercase tracking-widest">
+              Schedule Leadership Call
+            </button>
+          </Link>
+
+          {/* Services Page */}
+          <Link to="/services">
+            <button className="px-12 py-5 bg-transparent border-2 border-white/20 text-white font-black rounded-2xl hover:bg-white/10 transition-all text-sm uppercase tracking-widest">
+              Explore Services
+            </button>
+          </Link>
+        </div>
         </div>
       </section>
     </div>
